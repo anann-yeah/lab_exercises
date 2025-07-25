@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anannya | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4f46e5;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        gap: 80px;
+      }
+    }
+
+    .hero-text {
+      max-width: 600px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero-text {
+        text-align: left;
+      }
+    }
+
+    .intro {
+      font-size: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00c853, #00b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .location {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .passion {
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+
+    .hire-btn {
+      display: inline-block;
+      background-color: #1e40af;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .hire-btn:hover {
+      background-color: #1a237e;
+    }
+
+    .hero-img img {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* About Section */
+    .about {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about h3 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #1e3a8a;
+    }
+
+    .about p {
+      font-size: 16px;
+      color: #444;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Portfolio.</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-text">
+      <p class="intro">Hello,</p>
+      <h1>I'm <span class="gradient-text">Anannya</span></h1>
+      <h2>A Full Stack Developer</h2>
+      <p class="location">From India</p>
+      <p class="passion">
+        I'm passionate about Frontend, UI/UX, and Graphic Designing. 
+        I love turning ideas into clean, functional, and beautiful interfaces.
+      </p>
+      <a href="#" class="hire-btn">Hire Me</a>
+    </div>
+    <div class="hero-img">
+      <img src="09de5661f608063396f52be8e716d758_IMG_3412.JPG" alt="Anannya" />
+    </div>
+  </main>
+
+  <section class="about">
+    <h3>About Me</h3>
+    <p>
+      I’m a professionally trained Carnatic singer and a tech enthusiast who finds creativity 
+      in both music and code. I enjoy working on meaningful web applications, building responsive 
+      UIs, and solving real-world problems with clean design and solid development practices.
+    </p>
+    <p>
+      I’ve worked on IoT Dashboards, data dashboards, and frontend-heavy applications using 
+      React, Express, and MongoDB. When I’m not coding, I’m probably designing, singing, or exploring new tools.
+    </p>
+  </section>
+</body>
+</html>
