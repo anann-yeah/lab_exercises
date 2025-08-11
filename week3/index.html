@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to right, #40E0D0 50%, #ffffff 50%);
+    }
+
+    .form-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+        max-width: 400px;
+        width: 100%;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        outline: none;
+        transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+        border-color: #40E0D0;
+        box-shadow: 0 0 6px rgba(64, 224, 208, 0.4);
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #40E0D0;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #2ac1b2;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Event Registration</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="nameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" required>
+            <div class="error" id="phoneError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender / Pronouns *</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="he/him">He/Him</option>
+                <option value="she/her">She/Her</option>
+                <option value="they/them">They/Them</option>
+                <option value="other">Other</option>
+            </select>
+            <div class="error" id="genderError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob" name="dob" required>
+            <div class="error" id="dobError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age *</label>
+            <input type="number" id="age" name="age" required min="0">
+            <div class="error" id="ageError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality">Nationality *</label>
+            <input type="text" id="nationality" name="nationality" required>
+            <div class="error" id="nationalityError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="emergency">Emergency Contact Number *</label>
+            <input type="tel" id="emergency" name="emergency" required>
+            <div class="error" id="emergencyError"></div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        // Name
+        const name = document.getElementById("name").value.trim();
+        if (!name) {
+            document.getElementById("nameError").textContent = "Name is required.";
+            valid = false;
+        } else document.getElementById("nameError").textContent = "";
+
+        // Email
+        const email = document.getElementById("email").value.trim();
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById("emailError").textContent = "Invalid email format.";
+            valid = false;
+        } else document.getElementById("emailError").textContent = "";
+
+        // Phone
+        const phone = document.getElementById("phone").value.trim();
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(phone)) {
+            document.getElementById("phoneError").textContent = "Phone must be 10 digits.";
+            valid = false;
+        } else document.getElementById("phoneError").textContent = "";
+
+        // Gender
+        const gender = document.getElementById("gender").value;
+        if (!gender) {
+            document.getElementById("genderError").textContent = "Please select your gender/pronouns.";
+            valid = false;
+        } else document.getElementById("genderError").textContent = "";
+
+        // DOB
+        const dob = document.getElementById("dob").value;
+        if (!dob) {
+            document.getElementById("dobError").textContent = "Date of Birth is required.";
+            valid = false;
+        } else document.getElementById("dobError").textContent = "";
+
+        // Age
+        const age = parseInt(document.getElementById("age").value.trim());
+        if (isNaN(age) || age < 18) {
+            document.getElementById("ageError").textContent = "You must be at least 18.";
+            valid = false;
+        } else document.getElementById("ageError").textContent = "";
+
+        // Nationality
+        const nationality = document.getElementById("nationality").value.trim();
+        if (!nationality) {
+            document.getElementById("nationalityError").textContent = "Nationality is required.";
+            valid = false;
+        } else document.getElementById("nationalityError").textContent = "";
+
+        // Emergency contact
+        const emergency = document.getElementById("emergency").value.trim();
+        if (!phoneRegex.test(emergency)) {
+            document.getElementById("emergencyError").textContent = "Emergency number must be 10 digits.";
+            valid = false;
+        } else document.getElementById("emergencyError").textContent = "";
+
+        if (valid) {
+            alert("Form submitted successfully!");
+            this.reset();
+        }
+    });
+</script>
+
+</body>
+</html>
